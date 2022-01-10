@@ -1,0 +1,2 @@
+activate env
+set DJANGO_READ_DOT_ENV_FILE=True
