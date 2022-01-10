@@ -5,7 +5,7 @@ from django.urls import include, path
 from django.views import defaults as default_views
 from django.views.generic import TemplateView
 from rest_framework.authtoken.views import obtain_auth_token
-from djgumroad.products.views import ProductListView, UserProductListView, ProductCreateView
+from djgumroad.products.views import ProductListView, UserProductListView, ProductCreateView, CreateCheckoutSessionView, SuccessView
 
 urlpatterns = [
     path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
@@ -16,6 +16,8 @@ urlpatterns = [
     # path(
     #     "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     # ),
+    path("create-checkout-session/<slug>/", CreateCheckoutSessionView.as_view(), name="create-checkout-session"),
+    path("success/", SuccessView.as_view(), name="success"),
     
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
